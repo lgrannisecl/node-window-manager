@@ -33,3 +33,6 @@ window.setBounds({ x: 0, y: 0 });
 # Documentation
 
 The documentation and API references are located in the [`docs`](docs) directory.
+
+
+brew install cmake

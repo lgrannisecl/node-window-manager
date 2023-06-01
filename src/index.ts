@@ -5,12 +5,12 @@ import { Monitor } from "./classes/monitor";
 import { EmptyMonitor } from "./classes/empty-monitor";
 import { resolve } from 'path';
 
-let addon: any;
+let addon: any = require('node-window-manager-addon');
 
-if (platform() === "win32" || platform() === "darwin") {
+/*if (platform() === "win32" || platform() === "darwin") {
   const ADDON_PATH = (process.env.NODE_ENV != "dev") ? "Release" : "Debug";
   addon = require(`node-gyp-build`)(resolve(__dirname, '..'));
-}
+}*/
 
 let interval: any = null;
 
@@ -34,7 +34,7 @@ class WindowManager extends EventEmitter {
       if (event === "window-activated") {
         interval = setInterval(async () => {
           const win = addon.getActiveWindow();
-          
+
           if (lastId !== win) {
             lastId = win;
             this.emit("window-activated", new Window(win));
